@@ -33,8 +33,8 @@ public class ImageServer {
 			ResourceConfig config = new ResourceConfig();
 			config.register(ImageResource.class);
 	
-			String ip = InetAddress.getLocalHost().getHostAddress();
-			String serverURI = String.format(SERVER_URI_FMT, ip, PORT);
+			String hostname = InetAddress.getLocalHost().getHostName();
+			String serverURI = String.format(SERVER_URI_FMT, hostname, PORT);
 			ImageResource.setServerBaseURI(serverURI);
 			
 			JdkHttpServerFactory.createHttpServer( URI.create(serverURI), config, SSLContext.getDefault());
