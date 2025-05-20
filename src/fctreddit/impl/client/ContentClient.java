@@ -16,8 +16,13 @@ public abstract class ContentClient extends Client implements Content {
 		if(serverURI.toString().endsWith("/rest")) {
 			return new RestContentClient(serverURI);
 		} else {
-			return new GrpcContentClient(serverURI);
+			try {
+				return new GrpcContentClient(serverURI);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+		return null;
 	}
 	
 }

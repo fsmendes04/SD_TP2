@@ -16,8 +16,13 @@ public abstract class UsersClient extends Client implements Users {
 		if(serverURI.toString().endsWith("/rest")) {
 			return new RestUsersClient(serverURI);
 		} else {
-			return new GrpcUsersClient(serverURI);
+			try {
+				return new GrpcUsersClient(serverURI);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+		return null;
 	}
 	
 }

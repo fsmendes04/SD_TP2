@@ -16,8 +16,13 @@ public abstract class ImageClient extends Client implements Image {
 		if(serverURI.toString().endsWith("/rest")) {
 			return new RestImageClient(serverURI);
 		} else {
-			return new GrpcImageClient(serverURI);
+			try {
+				return new GrpcImageClient(serverURI);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+		return null;
 	}
 	
 }

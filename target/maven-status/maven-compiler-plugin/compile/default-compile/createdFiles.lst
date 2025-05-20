@@ -3,8 +3,6 @@ fctreddit\impl\grpc\generated_java\UsersProtoBuf$SearchUserArgs.class
 fctreddit\impl\grpc\generated_java\ImageProtoBuf$GetImageArgs$1.class
 fctreddit\impl\grpc\generated_java\ContentProtoBuf$RemoveTracesOfUserArgsOrBuilder.class
 fctreddit\impl\grpc\generated_java\UsersProtoBuf$CreateUserResultOrBuilder.class
-fctreddit\impl\grpc\generated_java\ContentProtoBuf$VoteCountResultOrBuilder.class
-fctreddit\impl\grpc\generated_java\ContentProtoBuf$CreatePostArgsOrBuilder.class
 fctreddit\impl\server\Hibernate$TX.class
 fctreddit\impl\grpc\generated_java\ContentProtoBuf$EmptyMessage$Builder.class
 fctreddit\impl\grpc\generated_java\ContentProtoBuf$GetPostAnswersArgs$1.class
@@ -158,7 +156,6 @@ fctreddit\impl\grpc\generated_java\UsersProtoBuf$UpdateUserResult$Builder.class
 fctreddit\impl\grpc\generated_java\ContentProtoBuf$UpdatePostArgs$Builder.class
 fctreddit\impl\grpc\generated_java\ImageProtoBuf$DeleteImageResult$1.class
 fctreddit\impl\server\rest\UsersResource.class
-fctreddit\impl\grpc\generated_java\ContentProtoBuf$RemoveTracesOfUserArgs$Builder.class
 fctreddit\impl\grpc\generated_java\ImageProtoBuf$CreateImageResult$Builder.class
 fctreddit\impl\grpc\generated_java\ContentProtoBuf.class
 fctreddit\impl\client\grpc\GrpcImageClient.class
@@ -184,7 +181,6 @@ fctreddit\impl\grpc\generated_java\UsersGrpc$UsersMethodDescriptorSupplier.class
 fctreddit\impl\grpc\generated_java\UsersProtoBuf$GrpcUserOrBuilder.class
 fctreddit\impl\grpc\generated_java\ContentProtoBuf$GetPostsArgs$1.class
 fctreddit\impl\server\rest\ContentServer.class
-fctreddit\impl\grpc\generated_java\ContentProtoBuf$ChangeVoteArgs.class
 fctreddit\impl\server\grpc\ContentServer.class
 fctreddit\api\java\Result$ErrorCode.class
 fctreddit\impl\grpc\generated_java\ContentProtoBuf$GrpcPost$1.class
@@ -195,5 +191,4 @@ fctreddit\impl\grpc\generated_java\UsersGrpc$UsersFutureStub.class
 fctreddit\impl\grpc\generated_java\ContentProtoBuf$GetPostsArgsOrBuilder.class
 fctreddit\impl\grpc\generated_java\UsersProtoBuf$UpdateUserResult.class
 fctreddit\impl\client\grpc\DataModelAdaptor.class
-fctreddit\impl\client\grpc\GrpcUsersClient.class
 fctreddit\impl\grpc\generated_java\ImageProtoBuf$CreateImageArgs$1.class

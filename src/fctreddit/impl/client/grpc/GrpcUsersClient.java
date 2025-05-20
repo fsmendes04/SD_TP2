@@ -1,9 +1,13 @@
 package fctreddit.impl.client.grpc;
 
+import java.io.FileInputStream;
 import java.net.URI;
+import java.security.KeyStore;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import javax.net.ssl.TrustManagerFactory;
 
 import fctreddit.api.User;
 import fctreddit.api.java.Result;
@@ -20,9 +24,12 @@ import fctreddit.impl.grpc.generated_java.UsersProtoBuf.GrpcUser;
 import fctreddit.impl.grpc.generated_java.UsersProtoBuf.SearchUserArgs;
 import fctreddit.impl.grpc.generated_java.UsersProtoBuf.UpdateUserArgs;
 import fctreddit.impl.grpc.generated_java.UsersProtoBuf.UpdateUserResult;
+import io.grpc.netty.NettyChannelBuilder;
+import io.netty.handler.ssl.SslContext;
+import io.netty.handler.ssl.SslContextBuilder;
+import io.grpc.netty.GrpcSslContexts;
 import io.grpc.Channel;
 import io.grpc.LoadBalancerRegistry;
-import io.grpc.ManagedChannelBuilder;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import io.grpc.internal.PickFirstLoadBalancerProvider;
@@ -36,10 +43,32 @@ public class GrpcUsersClient extends UsersClient {
 	
 	final UsersGrpc.UsersBlockingStub stub;
 		
-	public GrpcUsersClient(URI serverURI) { 
+	public GrpcUsersClient(URI serverURI) throws Exception { 
 		super(serverURI);
-		Channel channel = ManagedChannelBuilder.forAddress(serverURI.getHost(), serverURI.getPort()).usePlaintext()
-				.enableRetry().build();
+
+		String trustStoreFilename = System.getProperty("javax.net.ssl.trustStore");
+		String trustStorePassword = System.getProperty("javax.net.ssl.trustStorePassword");
+		
+		
+		KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
+		try(FileInputStream input = new FileInputStream(trustStoreFilename)) {
+			trustStore.load(input, trustStorePassword.toCharArray());
+		}
+		
+		TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(
+				TrustManagerFactory.getDefaultAlgorithm());
+		trustManagerFactory.init(trustStore);
+		
+		SslContext context = GrpcSslContexts
+				.configure(
+						SslContextBuilder.forClient().trustManager(trustManagerFactory)
+						).build();
+		
+		Channel channel = NettyChannelBuilder
+				.forAddress(serverURI.getHost(), serverURI.getPort())
+				.sslContext(context)
+				.enableRetry()
+				.build();		
 		stub = UsersGrpc.newBlockingStub( channel );
 	}
 
