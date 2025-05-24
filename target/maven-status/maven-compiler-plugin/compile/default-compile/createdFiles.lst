@@ -115,6 +115,7 @@ fctreddit\impl\server\rest\ContentResource.class
 fctreddit\impl\grpc\generated_java\ContentGrpc$ContentBlockingStub.class
 fctreddit\impl\server\grpc\GrpcContentServerStub.class
 fctreddit\impl\grpc\generated_java\UsersProtoBuf$DeleteUserResult$1.class
+fctreddit\impl\client\rest\Imgur\ImageUpload$2.class
 fctreddit\impl\grpc\generated_java\ContentProtoBuf$EmptyMessageOrBuilder.class
 fctreddit\impl\grpc\generated_java\ImageProtoBuf$DeleteImageResult$Builder.class
 fctreddit\impl\grpc\generated_java\ImageGrpc$ImageImplBase.class

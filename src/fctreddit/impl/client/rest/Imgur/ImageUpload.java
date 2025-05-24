@@ -52,8 +52,11 @@ public class ImageUpload {
                 System.err.println("Operation Failed\nStatus: " + r.getCode() + "\nBody: " + r.getBody());
                 return false;
             } else {
-                BasicResponse<Map<String, Object>> body = json.fromJson(r.getBody(), new com.google.gson.reflect.TypeToken<BasicResponse<Map<String, Object>>>(){}.getType());
-                System.out.println("Operation Succeeded\nImage name: " + imageName + "\nImage ID: " + body.getData().get("id"));
+                BasicResponse<Map<String, Object>> body = json.fromJson(r.getBody(),
+                        new com.google.gson.reflect.TypeToken<BasicResponse<Map<String, Object>>>() {
+                        }.getType());
+                System.out.println(
+                        "Operation Succeeded\nImage name: " + imageName + "\nImage ID: " + body.getData().get("id"));
                 return body.isSuccess();
             }
         } catch (InterruptedException e) {
@@ -67,6 +70,38 @@ public class ImageUpload {
             System.exit(1);
         }
         return false;
+    }
+
+    public String executeReturnId(String imageName, byte[] data) {
+        OAuthRequest request = new OAuthRequest(Verb.POST, UPLOAD_IMAGE_URL);
+        request.addHeader(CONTENT_TYPE_HDR, JSON_CONTENT_TYPE);
+        request.setPayload(json.toJson(new ImageUploadArguments(data, imageName)));
+
+        service.signRequest(accessToken, request);
+
+        try {
+            Response r = service.execute(request);
+
+            if (r.getCode() != HTTP_OK) {
+                System.err.println("Operation Failed\nStatus: " + r.getCode() + "\nBody: " + r.getBody());
+                return null;
+            } else {
+                BasicResponse<Map<String, Object>> body = json.fromJson(r.getBody(),
+                        new com.google.gson.reflect.TypeToken<BasicResponse<Map<String, Object>>>() {
+                        }.getType());
+                return (String) body.getData().get("id");
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            System.exit(1);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            System.exit(1);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+        return null;
     }
 
     public static void main(String[] args) throws Exception {
@@ -84,12 +119,12 @@ public class ImageUpload {
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(0);
-        } 
+        }
 
         ImageUpload iu = new ImageUpload();
 
         if (iu.execute(fileName, data)) {
-            System.out.println("Image '" + fileName + "' uploaded successfully.");   
+            System.out.println("Image '" + fileName + "' uploaded successfully.");
         } else {
             System.out.println("Failed to upload image '" + fileName + "'.");
         }

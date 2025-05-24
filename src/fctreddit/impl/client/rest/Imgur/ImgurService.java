@@ -29,7 +29,7 @@ public class ImgurService {
 
     public boolean uploadImage(String imageName, byte[] data) {
         ImageUpload uploader = new ImageUpload();
-        return uploader.execute(imageName, data);
+        return uploader.executeReturnId(imageName, data) != null;
     }
 
     public byte[] downloadImage(String imageId) throws Exception {
