@@ -8,15 +8,19 @@ import jakarta.ws.rs.WebApplicationException;
 
 public class ImageResource extends RestResource implements RestImage {
 
-	Image impl;
+	private final Image impl;
 	
 	private static String baseURI = null;
 
 	
 	public ImageResource() {
-		impl = new JavaImage();
+		this(new JavaImage());
 	}
 	
+	public ImageResource(Image impl) {
+		this.impl = impl;
+	}
+
 	public static void setServerBaseURI(String s) {
 		if(ImageResource.baseURI == null)
 			ImageResource.baseURI = s;

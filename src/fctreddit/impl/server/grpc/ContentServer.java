@@ -17,7 +17,7 @@ import io.netty.handler.ssl.SslContextBuilder;
 
 
 public class ContentServer {
-public static final int PORT = 9000;
+public static final int PORT = 9002;
 
 	private static final String GRPC_CTX = "/grpc";
 	private static final String SERVER_BASE_URI = "grpc://%s:%s%s";

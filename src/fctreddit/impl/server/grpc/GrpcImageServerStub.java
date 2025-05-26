@@ -19,10 +19,17 @@ import io.grpc.stub.StreamObserver;
 
 public class GrpcImageServerStub extends GrpcStub implements ImageGrpc.AsyncService, BindableService {
 
-	private Image impl = new JavaImage();
-	
+	private Image impl;
 	private static String baseURI = null;
 	
+	public GrpcImageServerStub() {
+		this(new JavaImage());
+	}
+
+	public GrpcImageServerStub(Image impl) {
+		this.impl = impl;
+	}
+
 	@Override
 	public ServerServiceDefinition bindService() {
 		return ImageGrpc.bindService(this);
