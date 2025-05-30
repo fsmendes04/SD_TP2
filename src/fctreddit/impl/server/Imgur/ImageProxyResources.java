@@ -1,4 +1,4 @@
-package fctreddit.impl.server.Imgur;
+package fctreddit.impl.server.imgur;
 
 import fctreddit.api.java.Image;
 import fctreddit.api.rest.RestImage;
