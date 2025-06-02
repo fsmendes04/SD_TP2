@@ -1,4 +1,4 @@
-package fctreddit.impl.server.Imgur.Operations;
+package fctreddit.impl.server.imgur.Operations;
 
 public class DeleteImageFromAlbum {
     

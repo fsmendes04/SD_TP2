@@ -4,7 +4,7 @@ FROM smduarte/sd2425testerbase
 WORKDIR /home/sd
 
 ADD hibernate.cfg.xml .
-ADD fctreddit.props .
+ADD fctreddit.properties .
 
 COPY *.*ks /home/sd/
 

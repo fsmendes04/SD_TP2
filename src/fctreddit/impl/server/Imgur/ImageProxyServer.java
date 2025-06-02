@@ -1,4 +1,4 @@
-package fctreddit.impl.server.Imgur;
+package fctreddit.impl.server.imgur;
 
 import java.io.FileInputStream;
 import java.net.InetAddress;

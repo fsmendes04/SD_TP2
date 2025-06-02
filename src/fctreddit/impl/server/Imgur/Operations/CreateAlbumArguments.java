@@ -1,4 +1,4 @@
-package fctreddit.impl.server.Imgur.Operations;
+package fctreddit.impl.server.imgur.Operations;
 
 public record CreateAlbumArguments(String title, String description, String privacy, String layout, String cover,
         String[] ids, String[] deletedHashes) {

@@ -11,10 +11,10 @@ import fctreddit.api.User;
 import fctreddit.api.java.Image;
 import fctreddit.api.java.Result;
 import fctreddit.api.java.Result.ErrorCode;
-import fctreddit.impl.server.Imgur.Operations.AddImageToAlbum;
-import fctreddit.impl.server.Imgur.Operations.CreateAlbum;
-import fctreddit.impl.server.Imgur.Operations.DeleteAlbum;
-import fctreddit.impl.server.Imgur.Operations.ImageUpload;
+import fctreddit.impl.server.imgur.Operations.AddImageToAlbum;
+import fctreddit.impl.server.imgur.Operations.CreateAlbum;
+import fctreddit.impl.server.imgur.Operations.DeleteAlbum;
+import fctreddit.impl.server.imgur.Operations.ImageUpload;
 
 import com.github.scribejava.apis.ImgurApi;
 import com.github.scribejava.core.builder.ServiceBuilder;
