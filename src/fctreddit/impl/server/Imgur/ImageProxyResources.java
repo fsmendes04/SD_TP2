@@ -1,14 +1,16 @@
 package fctreddit.impl.server.imgur;
 
+import fctreddit.api.imgur.ImgurImage;
 import fctreddit.api.java.Image;
-import fctreddit.api.rest.RestImage;
 
 import fctreddit.impl.server.java.JavaImgur;
 import fctreddit.api.java.Result;
 import fctreddit.impl.server.rest.RestResource;
+import jakarta.ws.rs.Path;
 import jakarta.ws.rs.WebApplicationException;
 
-public class ImageProxyResources extends RestResource implements RestImage {
+@Path(ImgurImage.PATH)
+public class ImageProxyResources extends RestResource implements ImgurImage {
 
     private final Image impl;
     private static String baseURI = null;
@@ -27,10 +29,12 @@ public class ImageProxyResources extends RestResource implements RestImage {
     }
 
     @Override
-    public String createImage(String userId, byte[] imageContents, String password) {
+    public String uploadImage(String userId, byte[] imageContents, String password) {
         Result<String> res = impl.createImage(userId, imageContents, password);
-        if (res.isOK())
-            return ImageProxyResources.baseURI + RestImage.PATH + "/" + userId + "/" + res.value();
+        if (res.isOK()) {
+            // JavaImgur já retorna a URL completa do Imgur, então apenas retornamos ela
+            return res.value();
+        }
         throw new WebApplicationException(errorCodeToStatus(res.error()));
     }
 
@@ -48,5 +52,35 @@ public class ImageProxyResources extends RestResource implements RestImage {
         if (res.isOK())
             return;
         throw new WebApplicationException(errorCodeToStatus(res.error()));
+    }
+
+    @Override
+    public void createAlbum(String userId, String albumId, String password) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'createAlbum'");
+    }
+
+    @Override
+    public void addImageToAlbum(String userId, String albumId, String imageId, byte[] imageContents, String password) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'addImageToAlbum'");
+    }
+
+    @Override
+    public byte[] getImageFromAlbum(String userId, String albumId) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getImageFromAlbum'");
+    }
+
+    @Override
+    public void deleteImageFromAlbum(String userId, String albumId, String imageId, String password) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'deleteImageFromAlbum'");
+    }
+
+    @Override
+    public void deleteAlbum(String userId, String albumId, String password) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'deleteAlbum'");
     }
 }

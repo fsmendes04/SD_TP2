@@ -9,6 +9,7 @@ import org.glassfish.jersey.jdkhttp.JdkHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 
 import fctreddit.impl.server.Discovery;
+import fctreddit.impl.server.imgur.ImageProxyResources;
 import fctreddit.impl.server.java.JavaUsers;
 
 public class UsersServer {
@@ -23,18 +24,22 @@ public class UsersServer {
 	public static final int PORT = 8080;
 	public static final String SERVICE = "Users";
 	private static final String SERVER_URI_FMT = "https://%s:%s/rest";
-	
+
 	public static void main(String[] args) {
 		try {
-			
 			ResourceConfig config = new ResourceConfig();
 			config.register(UsersResource.class);
+			config.register(ImageProxyResources.class);
 	
 			String hostname = InetAddress.getLocalHost().getHostName();
 			String serverURI = String.format(SERVER_URI_FMT, hostname, PORT);
+			
+			// Set the base URI for image resources
+			ImageResource.setServerBaseURI(serverURI);
+			ImageProxyResources.setServerBaseURI(serverURI);
 
-			JdkHttpServerFactory.createHttpServer( URI.create(serverURI), config, SSLContext.getDefault());
-		
+			JdkHttpServerFactory.createHttpServer(URI.create(serverURI), config, SSLContext.getDefault());
+
 			Log.info(String.format("%s Server ready @ %s\n",  SERVICE, serverURI));
 			
 			Discovery d = new Discovery(Discovery.DISCOVERY_ADDR, SERVICE, serverURI);
