@@ -26,10 +26,10 @@ public static final int PORT = 9000;
 	
 	public static void main(String[] args) throws Exception {
 		
-		String keyStoreFilename = System.getProperty("javax.net.ssl.keyStore");
-		String keyStorePassword = System.getProperty("javax.net.ssl.keyStorePassword");
+		String keyStoreFilename = System.getProperty("javax.net.ssl.keyStore", "images-server.ks");
+		String keyStorePassword = System.getProperty("javax.net.ssl.keyStorePassword", "changeit");
 		
-		KeyStore keystore = KeyStore.getInstance(KeyStore.getDefaultType());		
+		KeyStore keystore = KeyStore.getInstance("PKCS12");		
 
 		try(FileInputStream input = new FileInputStream(keyStoreFilename)) {
 			keystore.load(input, keyStorePassword.toCharArray());
@@ -39,18 +39,19 @@ public static final int PORT = 9000;
 		KeyManagerFactory.getDefaultAlgorithm());
 		keyManagerFactory.init(keystore, keyStorePassword.toCharArray());
 
+		String serverURI = String.format(SERVER_BASE_URI, InetAddress.getLocalHost().getHostName(), PORT, GRPC_CTX);
+		Discovery discovery = new Discovery(Discovery.DISCOVERY_ADDR, SERVICE, serverURI);
+		JavaImage.setDiscovery(discovery);
+		
 		GrpcImageServerStub stub = new GrpcImageServerStub();
 		
 		SslContext context = GrpcSslContexts.configure(SslContextBuilder.forServer(keyManagerFactory)).build();
 
 		Server server = NettyServerBuilder.forPort(PORT).addService(stub).sslContext(context).build();		
-		String serverURI = String.format(SERVER_BASE_URI, InetAddress.getLocalHost().getHostAddress(), PORT, GRPC_CTX);
 		
 		GrpcImageServerStub.setServerBaseURI(serverURI);
 		
-		Discovery discovery = new Discovery(Discovery.DISCOVERY_ADDR, SERVICE, serverURI);
 		discovery.start();
-		JavaImage.setDiscovery(discovery);
 		
 		Log.info(String.format("Image gRPC Server ready @ %s\n", serverURI));
 		server.start().awaitTermination();

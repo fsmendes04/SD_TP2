@@ -47,9 +47,8 @@ public class GrpcContentClient extends ContentClient {
 	public GrpcContentClient(URI serverURI) throws Exception {
 		super(serverURI);
 		
-		String trustStoreFilename = System.getProperty("javax.net.ssl.trustStore");
-		String trustStorePassword = System.getProperty("javax.net.ssl.trustStorePassword");
-		
+		String trustStoreFilename = System.getProperty("javax.net.ssl.trustStore", "truststore.ks");
+		String trustStorePassword = System.getProperty("javax.net.ssl.trustStorePassword", "changeit");
 		
 		KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
 		try(FileInputStream input = new FileInputStream(trustStoreFilename)) {

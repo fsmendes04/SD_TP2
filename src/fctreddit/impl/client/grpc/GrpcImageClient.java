@@ -41,8 +41,8 @@ public class GrpcImageClient extends ImageClient {
 	public GrpcImageClient(URI serverURI) throws Exception {
 		super(serverURI);
 
-		String trustStoreFilename = System.getProperty("javax.net.ssl.trustStore");
-		String trustStorePassword = System.getProperty("javax.net.ssl.trustStorePassword");
+		String trustStoreFilename = System.getProperty("javax.net.ssl.trustStore", "truststore.ks");
+		String trustStorePassword = System.getProperty("javax.net.ssl.trustStorePassword", "changeit");
 		
 		
 		KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());

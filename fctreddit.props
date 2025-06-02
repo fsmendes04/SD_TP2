@@ -21,8 +21,8 @@ DISCOVERY_MULTICAST_PORT=2266
 
 CLIENT_TRUSTSTORE=truststore.ks,changeit
 USERS_KEYSTORES=Users,users-server.ks,userspassword
-IMAGE_KEYSTORES=Images,images-server.ks,imagespassword
-CONTENT_KEYSTORES=Content,content-server.ks,contentpassword
+IMAGE_KEYSTORES=Images,images-server.ks,imagespassword image-2,images2-server.ks,imagespassword
+CONTENT_KEYSTORES=Content,content-server.ks,contentpassword content-2,content2-server.ks,contentpassword content-3,content3-server.ks,contentpassword
 
 IMAGE_PROXY_MAINCLASS=<classe main do Proxy>
 IMAGE_PROXY_EXTRA_ARGS=<eventais parâmetros adicionais a passar ao Proxy>
