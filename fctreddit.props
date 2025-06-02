@@ -1,0 +1,35 @@
+USERS_REST_SERVER_MAINCLASS=fctreddit.impl.server.rest.UsersServer
+USERS_REST_PORT=8080
+USERS_REST_EXTRA_ARGS=
+IMAGE_REST_SERVER_MAINCLASS=fctreddit.impl.server.rest.ImageServer
+IMAGE_REST_PORT=8081
+IMAGE_REST_EXTRA_ARGS=
+CONTENT_REST_SERVER_MAINCLASS=fctreddit.impl.server.rest.ContentServer
+CONTENT_REST_PORT=8082
+CONTENT_REST_EXTRA_ARGS=
+USERS_GRPC_SERVER_MAINCLASS=fctreddit.impl.server.grpc.UsersServer
+USERS_GRPC_PORT=9000
+USERS_GRPC_EXTRA_ARGS=
+IMAGE_GRPC_SERVER_MAINCLASS=fctreddit.impl.server.grpc.ImageServer
+IMAGE_GRPC_PORT=9001
+IMAGE_GRPC_EXTRA_ARGS=
+CONTENT_GRPC_SERVER_MAINCLASS=fctreddit.impl.server.grpc.ContentServer
+CONTENT_GRPC_PORT=9002
+CONTENT_GRPC_EXTRA_ARGS=
+DISCOVERY_MULTICAST_IP=226.226.226.226
+DISCOVERY_MULTICAST_PORT=2266
+
+CLIENT_TRUSTSTORE=truststore.ks,changeit
+USERS_KEYSTORES=users-1,users-server.ks,password1
+IMAGE_KEYSTORES=image-1,images1-server.ks,password1 image-2,images2-server.ks,password2
+CONTENT_KEYSTORES=content-1,content1-server.ks,password1 content-2,content2-server.ks,password2 content-3,content3-server.ks,password3
+
+IMAGE_PROXY_MAINCLASS=fctreddit.impl.server.proxy.ImageProxyServer
+IMAGE_PROXY_EXTRA_ARGS=
+IMAGE_PROXY_PORT=8083
+IMAGE_PROXY_PROTO=rest
+
+CONTENT_REP_SERVER_MAINCLASS=
+CONTENT_REP_PORT=
+CONTENT_REP_EXTRA_ARGS_FIRST=
+CONTENT_REP_EXTRA_ARGS_OTHER=
