@@ -25,8 +25,6 @@ public class ImageServer {
 	public static final String SERVICE = "Image";
 	private static final String SERVER_URI_FMT = "https://%s:%s/rest";
 	
-	
-	
 	public static void main(String[] args) {
 		try {
 			

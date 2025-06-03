@@ -21,13 +21,13 @@ DISCOVERY_MULTICAST_PORT=2266
 
 CLIENT_TRUSTSTORE=truststore.ks,changeit
 USERS_KEYSTORES=Users,users-server.ks,userspassword
-IMAGE_KEYSTORES=Images,images-server.ks,imagespassword image-2,images2-server.ks,imagespassword
+IMAGE_KEYSTORES=Images,images-server.ks,imagespassword images2,images2-server.ks,imagespassword
 CONTENT_KEYSTORES=Content,content-server.ks,contentpassword content-2,content2-server.ks,contentpassword content-3,content3-server.ks,contentpassword
 
-IMAGE_PROXY_MAINCLASS=<classe main do Proxy>
-IMAGE_PROXY_EXTRA_ARGS=<eventais parâmetros adicionais a passar ao Proxy>
-IMAGE_PROXY_PORT=<porto do servidor Proxy>
-IMAGE_PROXY_PROTO=<tipo do servidor Proxy>; valores esperados: rest ou grpc
+IMAGE_PROXY_MAINCLASS=fctreddit.impl.server.Imgur.ImageProxyServer
+IMAGE_PROXY_EXTRA_ARGS=
+IMAGE_PROXY_PORT=8080
+IMAGE_PROXY_PROTO=rest
 
 CONTENT_REP_SERVER_MAINCLASS=<classe main do servidor Content replicado>,
 CONTENT_REP_PORT=<porto do servidor Content replicado>,
