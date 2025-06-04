@@ -1,5 +1,6 @@
 package fctreddit.impl.server.java;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -30,8 +31,14 @@ public class JavaContent extends JavaServer implements Content {
 
 	private static String serverURI;
 
+  private static final String IMAGE_SERVER_PASSWORD = "image_server_secret";
+
+	private static final long CLEANUP_INTERVAL = 30_000; // 30 segundos
+
 	public JavaContent() {
 		hibernate = Hibernate.getInstance();
+		cleanupInvalidMediaUrls();
+		startMediaUrlCleanupThread();
 
 	}
 
@@ -39,6 +46,115 @@ public class JavaContent extends JavaServer implements Content {
 		if (JavaContent.serverURI == null)
 			JavaContent.serverURI = serverURI;
 	}
+
+	private void startMediaUrlCleanupThread() {
+        Thread cleanupThread = new Thread(() -> {
+            while (true) {
+                try {
+                    Thread.sleep(CLEANUP_INTERVAL);
+                    cleanupInvalidMediaUrls();
+                } catch (InterruptedException e) {
+                    Log.warning("Media URL cleanup thread interrupted: " + e.getMessage());
+                    break;
+                }
+            }
+        });
+        cleanupThread.setDaemon(true);
+        cleanupThread.start();
+        Log.info("Started media URL cleanup thread");
+    }
+
+private void cleanupInvalidMediaUrls() {
+    Log.info("Starting cleanup of invalid media URLs in posts at ");
+    try {
+        Log.info("Executing SQL query to fetch post IDs with non-null mediaUrl");
+        List<String> postIds = hibernate.sql(
+            "SELECT p.postId FROM Post p WHERE p.mediaUrl IS NOT NULL",
+            String.class
+        );
+        Log.info("Retrieved " + postIds.size() + " post IDs: " + postIds);
+
+        for (String postId : postIds) {
+            Log.info("Processing postId: " + postId);
+            try {
+                Log.info("Fetching Post object for postId: " + postId);
+                Post post = hibernate.get(Post.class, postId);
+                if (post == null) {
+                    Log.warning("Post not found for postId: " + postId);
+                    continue;
+                }
+                Log.info("Post found: authorId=" + post.getAuthorId() + ", mediaUrl=" + post.getMediaUrl());
+
+                if (post.getMediaUrl() == null) {
+                    Log.warning("mediaUrl is null for postId: " + postId + ", skipping");
+                    continue;
+                }
+
+                Log.info("Extracting imageId from mediaUrl: " + post.getMediaUrl());
+                String imageId = extractResourceID(post.getMediaUrl());
+                if (imageId == null) {
+                    Log.warning("Failed to extract imageId from mediaUrl: " + post.getMediaUrl() + " for postId: " + postId);
+                    continue;
+                }
+                Log.info("Extracted imageId: " + imageId);
+
+                String userId = post.getAuthorId() != null ? post.getAuthorId() : "";
+                Log.info("Using userId: " + userId + " for imageId: " + imageId);
+
+                Log.info("Calling getImageClient().getImage for userId: " + userId + ", imageId: " + imageId);
+                Result<byte[]> imageResult = getImageClient().getImage(userId, imageId);
+                Log.info("Image result: isOK=" + imageResult.isOK() + ", error=" + (imageResult.isOK() ? "none" : imageResult.error()));
+
+                if (!imageResult.isOK() && imageResult.error() == ErrorCode.NOT_FOUND) {
+                    Log.info("Image not found, updating mediaUrl to null for postId: " + postId);
+                    TX tx = hibernate.beginTransaction();
+                    try {
+                        Log.info("Setting mediaUrl to null for postId: " + postId);
+                        post.setMediaUrl(null);
+                        Log.info("Persisting post: " + postId);
+                        hibernate.persist(tx, post);
+                        Log.info("Committing transaction for postId: " + postId);
+                        hibernate.commitTransaction(tx);
+                        Log.info("Successfully removed invalid media URL for post: " + postId);
+                    } catch (Exception e) {
+                        hibernate.abortTransaction(tx);
+                        Log.severe("Failed to update post " + postId + ": " + e.getMessage() + "\nStack trace: " +
+                            Arrays.toString(e.getStackTrace()));
+                    }
+                } else {
+                    Log.info("Image exists or error is not NOT_FOUND, skipping mediaUrl update for postId: " + postId);
+                }
+            } catch (Exception e) {
+                Log.severe("Error processing postId " + postId + ": " + e.getMessage() + "\nStack trace: " +
+                    Arrays.toString(e.getStackTrace()));
+            }
+        }
+    } catch (Exception e) {
+        Log.severe("Error during media URL cleanup: " + e.getMessage() + "\nStack trace: " +
+            Arrays.toString(e.getStackTrace()));
+    }
+    Log.info("Completed cleanup of invalid media URLs at");
+}
+
+	@Override
+  public Result<Boolean> hasImageReferences(String imageId, String serverPassword) {
+      Log.info("Checking references for image: " + imageId);
+      if (!IMAGE_SERVER_PASSWORD.equals(serverPassword)) {
+          Log.info("Invalid server password for image reference check");
+          return Result.error(ErrorCode.FORBIDDEN);
+      }
+      try {
+          String mediaUrl = serverURI + "/images/" + imageId;
+          List<String> posts = hibernate.sql(
+              "SELECT p.postId FROM Post p WHERE p.mediaUrl = '" + mediaUrl + "'",
+              String.class
+          );
+          return Result.ok(!posts.isEmpty());
+      } catch (Exception e) {
+          Log.severe("Error checking image references: " + e.getMessage());
+          return Result.error(ErrorCode.INTERNAL_ERROR);
+      }
+  }
 
 	@Override
 	public Result<String> createPost(Post post, String userPassword) {

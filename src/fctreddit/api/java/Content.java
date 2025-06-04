@@ -183,4 +183,8 @@ public interface Content {
 	 */
 	public Result<Void> removeTracesOfUser(String userId);
 
+
+	public Result<Boolean> hasImageReferences(String imageId, String serverPassword);
+
+
 }

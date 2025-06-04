@@ -418,6 +418,37 @@ public final class ContentGrpc {
     return getRemoveTracesOfUserMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs,
+      fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult> getHasImageReferencesMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "hasImageReferences",
+      requestType = fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs.class,
+      responseType = fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs,
+      fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult> getHasImageReferencesMethod() {
+    io.grpc.MethodDescriptor<fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs, fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult> getHasImageReferencesMethod;
+    if ((getHasImageReferencesMethod = ContentGrpc.getHasImageReferencesMethod) == null) {
+      synchronized (ContentGrpc.class) {
+        if ((getHasImageReferencesMethod = ContentGrpc.getHasImageReferencesMethod) == null) {
+          ContentGrpc.getHasImageReferencesMethod = getHasImageReferencesMethod =
+              io.grpc.MethodDescriptor.<fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs, fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "hasImageReferences"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult.getDefaultInstance()))
+              .setSchemaDescriptor(new ContentMethodDescriptorSupplier("hasImageReferences"))
+              .build();
+        }
+      }
+    }
+    return getHasImageReferencesMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -556,6 +587,13 @@ public final class ContentGrpc {
         io.grpc.stub.StreamObserver<fctreddit.impl.grpc.generated_java.ContentProtoBuf.EmptyMessage> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRemoveTracesOfUserMethod(), responseObserver);
     }
+
+    /**
+     */
+    default void hasImageReferences(fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs request,
+        io.grpc.stub.StreamObserver<fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getHasImageReferencesMethod(), responseObserver);
+    }
   }
 
   /**
@@ -688,6 +726,14 @@ public final class ContentGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getRemoveTracesOfUserMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void hasImageReferences(fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs request,
+        io.grpc.stub.StreamObserver<fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getHasImageReferencesMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -795,6 +841,13 @@ public final class ContentGrpc {
     public fctreddit.impl.grpc.generated_java.ContentProtoBuf.EmptyMessage removeTracesOfUser(fctreddit.impl.grpc.generated_java.ContentProtoBuf.RemoveTracesOfUserArgs request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getRemoveTracesOfUserMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult hasImageReferences(fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getHasImageReferencesMethod(), getCallOptions(), request);
     }
   }
 
@@ -917,6 +970,14 @@ public final class ContentGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getRemoveTracesOfUserMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult> hasImageReferences(
+        fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getHasImageReferencesMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_CREATE_POST = 0;
@@ -932,6 +993,7 @@ public final class ContentGrpc {
   private static final int METHODID_GET_UP_VOTES = 10;
   private static final int METHODID_GET_DOWN_VOTES = 11;
   private static final int METHODID_REMOVE_TRACES_OF_USER = 12;
+  private static final int METHODID_HAS_IMAGE_REFERENCES = 13;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -1001,6 +1063,10 @@ public final class ContentGrpc {
         case METHODID_REMOVE_TRACES_OF_USER:
           serviceImpl.removeTracesOfUser((fctreddit.impl.grpc.generated_java.ContentProtoBuf.RemoveTracesOfUserArgs) request,
               (io.grpc.stub.StreamObserver<fctreddit.impl.grpc.generated_java.ContentProtoBuf.EmptyMessage>) responseObserver);
+          break;
+        case METHODID_HAS_IMAGE_REFERENCES:
+          serviceImpl.hasImageReferences((fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs) request,
+              (io.grpc.stub.StreamObserver<fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -1111,6 +1177,13 @@ public final class ContentGrpc {
               fctreddit.impl.grpc.generated_java.ContentProtoBuf.RemoveTracesOfUserArgs,
               fctreddit.impl.grpc.generated_java.ContentProtoBuf.EmptyMessage>(
                 service, METHODID_REMOVE_TRACES_OF_USER)))
+        .addMethod(
+          getHasImageReferencesMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs,
+              fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult>(
+                service, METHODID_HAS_IMAGE_REFERENCES)))
         .build();
   }
 
@@ -1172,6 +1245,7 @@ public final class ContentGrpc {
               .addMethod(getGetUpVotesMethod())
               .addMethod(getGetDownVotesMethod())
               .addMethod(getRemoveTracesOfUserMethod())
+              .addMethod(getHasImageReferencesMethod())
               .build();
         }
       }

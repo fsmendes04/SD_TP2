@@ -23,6 +23,8 @@ import fctreddit.impl.grpc.generated_java.ContentProtoBuf.GetPostsArgs;
 import fctreddit.impl.grpc.generated_java.ContentProtoBuf.GetPostsArgs.Builder;
 import fctreddit.impl.grpc.generated_java.ContentProtoBuf.GetPostsResult;
 import fctreddit.impl.grpc.generated_java.ContentProtoBuf.GrpcPost;
+import fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs;
+import fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult;
 import fctreddit.impl.grpc.generated_java.ContentProtoBuf.RemoveTracesOfUserArgs;
 import fctreddit.impl.grpc.generated_java.ContentProtoBuf.UpdatePostArgs;
 import fctreddit.impl.grpc.generated_java.ContentProtoBuf.VoteCountResult;
@@ -253,6 +255,19 @@ public class GrpcContentClient extends ContentClient {
 			return Result.error(statusToErrorCode(sre.getStatus()));
 		}
 	}
+
+	@Override
+  public Result<Boolean> hasImageReferences(String imageId, String serverPassword) {
+    try {
+        HasImageReferencesResult res = stub.hasImageReferences(HasImageReferencesArgs.newBuilder()
+                .setImageId(imageId)
+                .setServerPassword(serverPassword)
+                .build());
+        return Result.ok(res.getHasReferences());
+    } catch (StatusRuntimeException sre) {
+        return Result.error(statusToErrorCode(sre.getStatus()));
+    }
+  }
 	
 	static ErrorCode statusToErrorCode(Status status) {
 		return switch (status.getCode()) {

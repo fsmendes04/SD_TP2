@@ -30,6 +30,8 @@ service Content {
 	rpc getDownVotes ( GetPostArgs ) returns ( VoteCountResult ) {}
 
 	rpc removeTracesOfUser ( RemoveTracesOfUserArgs ) returns ( EmptyMessage ) {}
+
+	rpc hasImageReferences (HasImageReferencesArgs) returns (HasImageReferencesResult) {}
 }
 
 message GrpcPost {
@@ -96,4 +98,13 @@ message VoteCountResult {
 
 message RemoveTracesOfUserArgs {
 	string userId = 1;
+}
+
+message HasImageReferencesArgs {
+    string imageId = 1;
+    string serverPassword = 2;
+}
+
+message HasImageReferencesResult {
+    bool hasReferences = 1;
 }

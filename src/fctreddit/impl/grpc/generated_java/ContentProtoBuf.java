@@ -9700,6 +9700,1217 @@ public final class ContentProtoBuf {
 
   }
 
+  public interface HasImageReferencesArgsOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:HasImageReferencesArgs)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string imageId = 1;</code>
+     * @return The imageId.
+     */
+    java.lang.String getImageId();
+    /**
+     * <code>string imageId = 1;</code>
+     * @return The bytes for imageId.
+     */
+    com.google.protobuf.ByteString
+        getImageIdBytes();
+
+    /**
+     * <code>string serverPassword = 2;</code>
+     * @return The serverPassword.
+     */
+    java.lang.String getServerPassword();
+    /**
+     * <code>string serverPassword = 2;</code>
+     * @return The bytes for serverPassword.
+     */
+    com.google.protobuf.ByteString
+        getServerPasswordBytes();
+  }
+  /**
+   * Protobuf type {@code HasImageReferencesArgs}
+   */
+  public static final class HasImageReferencesArgs extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:HasImageReferencesArgs)
+      HasImageReferencesArgsOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use HasImageReferencesArgs.newBuilder() to construct.
+    private HasImageReferencesArgs(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private HasImageReferencesArgs() {
+      imageId_ = "";
+      serverPassword_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new HasImageReferencesArgs();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HasImageReferencesArgs(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              imageId_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              serverPassword_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return fctreddit.impl.grpc.generated_java.ContentProtoBuf.internal_static_HasImageReferencesArgs_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return fctreddit.impl.grpc.generated_java.ContentProtoBuf.internal_static_HasImageReferencesArgs_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs.class, fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs.Builder.class);
+    }
+
+    public static final int IMAGEID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object imageId_;
+    /**
+     * <code>string imageId = 1;</code>
+     * @return The imageId.
+     */
+    @java.lang.Override
+    public java.lang.String getImageId() {
+      java.lang.Object ref = imageId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        imageId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string imageId = 1;</code>
+     * @return The bytes for imageId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getImageIdBytes() {
+      java.lang.Object ref = imageId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        imageId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SERVERPASSWORD_FIELD_NUMBER = 2;
+    private volatile java.lang.Object serverPassword_;
+    /**
+     * <code>string serverPassword = 2;</code>
+     * @return The serverPassword.
+     */
+    @java.lang.Override
+    public java.lang.String getServerPassword() {
+      java.lang.Object ref = serverPassword_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        serverPassword_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string serverPassword = 2;</code>
+     * @return The bytes for serverPassword.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getServerPasswordBytes() {
+      java.lang.Object ref = serverPassword_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        serverPassword_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(imageId_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, imageId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(serverPassword_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, serverPassword_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(imageId_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, imageId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(serverPassword_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, serverPassword_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs)) {
+        return super.equals(obj);
+      }
+      fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs other = (fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs) obj;
+
+      if (!getImageId()
+          .equals(other.getImageId())) return false;
+      if (!getServerPassword()
+          .equals(other.getServerPassword())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + IMAGEID_FIELD_NUMBER;
+      hash = (53 * hash) + getImageId().hashCode();
+      hash = (37 * hash) + SERVERPASSWORD_FIELD_NUMBER;
+      hash = (53 * hash) + getServerPassword().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HasImageReferencesArgs}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:HasImageReferencesArgs)
+        fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgsOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return fctreddit.impl.grpc.generated_java.ContentProtoBuf.internal_static_HasImageReferencesArgs_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return fctreddit.impl.grpc.generated_java.ContentProtoBuf.internal_static_HasImageReferencesArgs_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs.class, fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs.Builder.class);
+      }
+
+      // Construct using fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        imageId_ = "";
+
+        serverPassword_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return fctreddit.impl.grpc.generated_java.ContentProtoBuf.internal_static_HasImageReferencesArgs_descriptor;
+      }
+
+      @java.lang.Override
+      public fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs getDefaultInstanceForType() {
+        return fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs build() {
+        fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs buildPartial() {
+        fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs result = new fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs(this);
+        result.imageId_ = imageId_;
+        result.serverPassword_ = serverPassword_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs) {
+          return mergeFrom((fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs other) {
+        if (other == fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs.getDefaultInstance()) return this;
+        if (!other.getImageId().isEmpty()) {
+          imageId_ = other.imageId_;
+          onChanged();
+        }
+        if (!other.getServerPassword().isEmpty()) {
+          serverPassword_ = other.serverPassword_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object imageId_ = "";
+      /**
+       * <code>string imageId = 1;</code>
+       * @return The imageId.
+       */
+      public java.lang.String getImageId() {
+        java.lang.Object ref = imageId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          imageId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string imageId = 1;</code>
+       * @return The bytes for imageId.
+       */
+      public com.google.protobuf.ByteString
+          getImageIdBytes() {
+        java.lang.Object ref = imageId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          imageId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string imageId = 1;</code>
+       * @param value The imageId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setImageId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        imageId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string imageId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearImageId() {
+        
+        imageId_ = getDefaultInstance().getImageId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string imageId = 1;</code>
+       * @param value The bytes for imageId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setImageIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        imageId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object serverPassword_ = "";
+      /**
+       * <code>string serverPassword = 2;</code>
+       * @return The serverPassword.
+       */
+      public java.lang.String getServerPassword() {
+        java.lang.Object ref = serverPassword_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          serverPassword_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string serverPassword = 2;</code>
+       * @return The bytes for serverPassword.
+       */
+      public com.google.protobuf.ByteString
+          getServerPasswordBytes() {
+        java.lang.Object ref = serverPassword_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          serverPassword_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string serverPassword = 2;</code>
+       * @param value The serverPassword to set.
+       * @return This builder for chaining.
+       */
+      public Builder setServerPassword(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        serverPassword_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string serverPassword = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearServerPassword() {
+        
+        serverPassword_ = getDefaultInstance().getServerPassword();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string serverPassword = 2;</code>
+       * @param value The bytes for serverPassword to set.
+       * @return This builder for chaining.
+       */
+      public Builder setServerPasswordBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        serverPassword_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:HasImageReferencesArgs)
+    }
+
+    // @@protoc_insertion_point(class_scope:HasImageReferencesArgs)
+    private static final fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs();
+    }
+
+    public static fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<HasImageReferencesArgs>
+        PARSER = new com.google.protobuf.AbstractParser<HasImageReferencesArgs>() {
+      @java.lang.Override
+      public HasImageReferencesArgs parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HasImageReferencesArgs(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<HasImageReferencesArgs> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HasImageReferencesArgs> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesArgs getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface HasImageReferencesResultOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:HasImageReferencesResult)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>bool hasReferences = 1;</code>
+     * @return The hasReferences.
+     */
+    boolean getHasReferences();
+  }
+  /**
+   * Protobuf type {@code HasImageReferencesResult}
+   */
+  public static final class HasImageReferencesResult extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:HasImageReferencesResult)
+      HasImageReferencesResultOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use HasImageReferencesResult.newBuilder() to construct.
+    private HasImageReferencesResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private HasImageReferencesResult() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new HasImageReferencesResult();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HasImageReferencesResult(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              hasReferences_ = input.readBool();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return fctreddit.impl.grpc.generated_java.ContentProtoBuf.internal_static_HasImageReferencesResult_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return fctreddit.impl.grpc.generated_java.ContentProtoBuf.internal_static_HasImageReferencesResult_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult.class, fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult.Builder.class);
+    }
+
+    public static final int HASREFERENCES_FIELD_NUMBER = 1;
+    private boolean hasReferences_;
+    /**
+     * <code>bool hasReferences = 1;</code>
+     * @return The hasReferences.
+     */
+    @java.lang.Override
+    public boolean getHasReferences() {
+      return hasReferences_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (hasReferences_ != false) {
+        output.writeBool(1, hasReferences_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (hasReferences_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(1, hasReferences_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult)) {
+        return super.equals(obj);
+      }
+      fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult other = (fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult) obj;
+
+      if (getHasReferences()
+          != other.getHasReferences()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + HASREFERENCES_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getHasReferences());
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HasImageReferencesResult}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:HasImageReferencesResult)
+        fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResultOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return fctreddit.impl.grpc.generated_java.ContentProtoBuf.internal_static_HasImageReferencesResult_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return fctreddit.impl.grpc.generated_java.ContentProtoBuf.internal_static_HasImageReferencesResult_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult.class, fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult.Builder.class);
+      }
+
+      // Construct using fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        hasReferences_ = false;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return fctreddit.impl.grpc.generated_java.ContentProtoBuf.internal_static_HasImageReferencesResult_descriptor;
+      }
+
+      @java.lang.Override
+      public fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult getDefaultInstanceForType() {
+        return fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult build() {
+        fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult buildPartial() {
+        fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult result = new fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult(this);
+        result.hasReferences_ = hasReferences_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult) {
+          return mergeFrom((fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult other) {
+        if (other == fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult.getDefaultInstance()) return this;
+        if (other.getHasReferences() != false) {
+          setHasReferences(other.getHasReferences());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private boolean hasReferences_ ;
+      /**
+       * <code>bool hasReferences = 1;</code>
+       * @return The hasReferences.
+       */
+      @java.lang.Override
+      public boolean getHasReferences() {
+        return hasReferences_;
+      }
+      /**
+       * <code>bool hasReferences = 1;</code>
+       * @param value The hasReferences to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHasReferences(boolean value) {
+        
+        hasReferences_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool hasReferences = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearHasReferences() {
+        
+        hasReferences_ = false;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:HasImageReferencesResult)
+    }
+
+    // @@protoc_insertion_point(class_scope:HasImageReferencesResult)
+    private static final fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult();
+    }
+
+    public static fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<HasImageReferencesResult>
+        PARSER = new com.google.protobuf.AbstractParser<HasImageReferencesResult>() {
+      @java.lang.Override
+      public HasImageReferencesResult parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HasImageReferencesResult(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<HasImageReferencesResult> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HasImageReferencesResult> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public fctreddit.impl.grpc.generated_java.ContentProtoBuf.HasImageReferencesResult getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_GrpcPost_descriptor;
   private static final 
@@ -9765,6 +10976,16 @@ public final class ContentProtoBuf {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_RemoveTracesOfUserArgs_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_HasImageReferencesArgs_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_HasImageReferencesArgs_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_HasImageReferencesResult_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_HasImageReferencesResult_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -9799,26 +11020,31 @@ public final class ContentProtoBuf {
       "postId\030\001 \001(\t\022\016\n\006userId\030\002 \001(\t\022\025\n\010password" +
       "\030\003 \001(\tH\000\210\001\001B\013\n\t_password\"\016\n\014EmptyMessage" +
       "\" \n\017VoteCountResult\022\r\n\005count\030\001 \001(\005\"(\n\026Re" +
-      "moveTracesOfUserArgs\022\016\n\006userId\030\001 \001(\t2\231\005\n" +
-      "\007Content\0222\n\ncreatePost\022\017.CreatePostArgs\032" +
-      "\021.CreatePostResult\"\000\022,\n\010getPosts\022\r.GetPo" +
-      "stsArgs\032\017.GetPostsResult\"\000\022$\n\007getPost\022\014." +
-      "GetPostArgs\032\t.GrpcPost\"\000\0228\n\016getPostAnswe" +
-      "rs\022\023.GetPostAnswersArgs\032\017.GetPostsResult" +
-      "\"\000\022*\n\nupdatePost\022\017.UpdatePostArgs\032\t.Grpc" +
-      "Post\"\000\022.\n\ndeletePost\022\017.DeletePostArgs\032\r." +
-      "EmptyMessage\"\000\022.\n\nupVotePost\022\017.ChangeVot" +
-      "eArgs\032\r.EmptyMessage\"\000\0224\n\020removeUpVotePo" +
-      "st\022\017.ChangeVoteArgs\032\r.EmptyMessage\"\000\0220\n\014" +
-      "downVotePost\022\017.ChangeVoteArgs\032\r.EmptyMes" +
-      "sage\"\000\0226\n\022removeDownVotePost\022\017.ChangeVot" +
-      "eArgs\032\r.EmptyMessage\"\000\022.\n\ngetUpVotes\022\014.G" +
-      "etPostArgs\032\020.VoteCountResult\"\000\0220\n\014getDow" +
-      "nVotes\022\014.GetPostArgs\032\020.VoteCountResult\"\000" +
-      "\022>\n\022removeTracesOfUser\022\027.RemoveTracesOfU" +
-      "serArgs\032\r.EmptyMessage\"\000B5\n\"fctreddit.im" +
-      "pl.grpc.generated_javaB\017ContentProtoBufb" +
-      "\006proto3"
+      "moveTracesOfUserArgs\022\016\n\006userId\030\001 \001(\t\"A\n\026" +
+      "HasImageReferencesArgs\022\017\n\007imageId\030\001 \001(\t\022" +
+      "\026\n\016serverPassword\030\002 \001(\t\"1\n\030HasImageRefer" +
+      "encesResult\022\025\n\rhasReferences\030\001 \001(\0102\345\005\n\007C" +
+      "ontent\0222\n\ncreatePost\022\017.CreatePostArgs\032\021." +
+      "CreatePostResult\"\000\022,\n\010getPosts\022\r.GetPost" +
+      "sArgs\032\017.GetPostsResult\"\000\022$\n\007getPost\022\014.Ge" +
+      "tPostArgs\032\t.GrpcPost\"\000\0228\n\016getPostAnswers" +
+      "\022\023.GetPostAnswersArgs\032\017.GetPostsResult\"\000" +
+      "\022*\n\nupdatePost\022\017.UpdatePostArgs\032\t.GrpcPo" +
+      "st\"\000\022.\n\ndeletePost\022\017.DeletePostArgs\032\r.Em" +
+      "ptyMessage\"\000\022.\n\nupVotePost\022\017.ChangeVoteA" +
+      "rgs\032\r.EmptyMessage\"\000\0224\n\020removeUpVotePost" +
+      "\022\017.ChangeVoteArgs\032\r.EmptyMessage\"\000\0220\n\014do" +
+      "wnVotePost\022\017.ChangeVoteArgs\032\r.EmptyMessa" +
+      "ge\"\000\0226\n\022removeDownVotePost\022\017.ChangeVoteA" +
+      "rgs\032\r.EmptyMessage\"\000\022.\n\ngetUpVotes\022\014.Get" +
+      "PostArgs\032\020.VoteCountResult\"\000\0220\n\014getDownV" +
+      "otes\022\014.GetPostArgs\032\020.VoteCountResult\"\000\022>" +
+      "\n\022removeTracesOfUser\022\027.RemoveTracesOfUse" +
+      "rArgs\032\r.EmptyMessage\"\000\022J\n\022hasImageRefere" +
+      "nces\022\027.HasImageReferencesArgs\032\031.HasImage" +
+      "ReferencesResult\"\000B5\n\"fctreddit.impl.grp" +
+      "c.generated_javaB\017ContentProtoBufb\006proto" +
+      "3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -9902,6 +11128,18 @@ public final class ContentProtoBuf {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_RemoveTracesOfUserArgs_descriptor,
         new java.lang.String[] { "UserId", });
+    internal_static_HasImageReferencesArgs_descriptor =
+      getDescriptor().getMessageTypes().get(13);
+    internal_static_HasImageReferencesArgs_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_HasImageReferencesArgs_descriptor,
+        new java.lang.String[] { "ImageId", "ServerPassword", });
+    internal_static_HasImageReferencesResult_descriptor =
+      getDescriptor().getMessageTypes().get(14);
+    internal_static_HasImageReferencesResult_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_HasImageReferencesResult_descriptor,
+        new java.lang.String[] { "HasReferences", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
