@@ -166,12 +166,14 @@ public class RestContentClient extends ContentClient {
 	}
 
 	@Override
-  public Result<Boolean> hasImageReferences(String imageId, String serverPassword) {
-    Log.info("Executing a remote hasImageReferences for image: " + imageId);
-    Response r = executeGet(target.path("images").path(imageId)
-  	    .queryParam(ModifiedRestContent.PASSWORD, serverPassword)
-        .request().accept(MediaType.APPLICATION_JSON));
-    return extractResponseWithBody(r, Boolean.class);
-  }
+	public Result<Boolean> hasImageReferences(String postId, String serverPassword) {
+		Log.info("Executing a remote hasImageReferences for postId: " + postId);
+		
+		Response r = executeGet(target.path(postId).path("hasImageReferences")
+			.queryParam(ModifiedRestContent.PASSWORD, serverPassword) 
+			.request().accept(MediaType.APPLICATION_JSON)
+	);
+		return extractResponseWithBody(r, Boolean.class);
+	}
 
 }

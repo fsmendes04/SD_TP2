@@ -199,4 +199,19 @@ public class ContentResourceV1 extends RestResource implements ModifiedRestConte
                 .header(HEADER_VERSION, SyncPoint.getSyncPoint().getVersion())
                 .build();
     }
+
+    @Override
+    public Response hasImageReferences(Long version, String imageId, String serverPassword) {
+        Result<Boolean> res = impl.hasImageReferences(imageId, serverPassword);
+        if (!res.isOK()) {
+            throw new WebApplicationException(Response.status(errorCodeToStatus(res.error()))
+                    .header(HEADER_VERSION, SyncPoint.getSyncPoint().getVersion())
+                    .build());
+        }
+        return Response.status(Status.OK)
+                .header(HEADER_VERSION, SyncPoint.getSyncPoint().getVersion())
+                .type(MediaType.APPLICATION_JSON)
+                .entity(res.value())
+                .build();
+    }
 }

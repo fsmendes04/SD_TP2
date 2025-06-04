@@ -82,4 +82,9 @@ public interface ModifiedRestContent {
     @DELETE
     @Path(CLEAR + "/{" + USERID + "}")
     Response removeTracesOfUser(@HeaderParam(HEADER_VERSION) Long version, @PathParam(USERID) String userId);
+
+    @GET
+    @Path("{" + POSTID + "}/hasImageReferences")
+    @Produces(MediaType.APPLICATION_JSON)
+    Response hasImageReferences(@HeaderParam(HEADER_VERSION) Long version, @PathParam(POSTID) String imageId, @QueryParam(PASSWORD) String serverPassword);
 }

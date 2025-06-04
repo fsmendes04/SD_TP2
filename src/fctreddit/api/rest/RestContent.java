@@ -238,4 +238,20 @@ public interface RestContent {
 	@DELETE
 	@Path(CLEAR + "/{" + USERID + "}")
 	public void removeTracesOfUser(@PathParam(USERID) String userId);
+
+
+/**
+* Verifies whether a given post or any of its replies (recursively) contain media (image) references.
+*
+* @param postId the unique identifier of the Post to be analyzed
+* @param serverPassword used to authorize the operation
+* @return OK and true if there is at least one post in the thread (starting at postId) with a mediaUrl defined,
+*         OK and false otherwise,
+*         NOT_FOUND if the postId does not match an existing post
+*/
+@GET
+@Path("{" + POSTID + "}/hasImageReferences")
+@Produces(MediaType.APPLICATION_JSON)
+public boolean hasImageReferences(@PathParam(POSTID) String postId, @QueryParam(PASSWORD) String serverPassword);
+	
 }

@@ -184,6 +184,14 @@ public interface Content {
 	public Result<Void> removeTracesOfUser(String userId);
 
 
+	/**
+	 * Checks if a given post has any image references, i.e., if it has any image URLs
+	 * associated with it.
+	 * 
+	 * @param postId the unique identifier of the post to be checked
+	 * @return OK and true if the post has image references, false otherwise;
+	 *         NOT_FOUND if the postId does not match an existing Post.
+	 */
 	public Result<Boolean> hasImageReferences(String imageId, String serverPassword);
 
 

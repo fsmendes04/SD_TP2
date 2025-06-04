@@ -51,6 +51,8 @@ public class SyncPoint {
 		notifyAll();
 	}
 
+	
+
 	public synchronized long getVersion() {
 		return version;
 	}

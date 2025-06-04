@@ -17,7 +17,7 @@ public class Post {
 	@Column(length=4096)
 	private String content;
 	private String mediaUrl;
-	private String parentUrl; //This should be null when this is a top level post.
+	private String parentUrl; 
 	private int upVote;
 	private int downVote;
 	
