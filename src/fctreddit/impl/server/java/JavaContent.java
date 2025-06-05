@@ -14,7 +14,7 @@ import fctreddit.api.java.Content;
 import fctreddit.api.java.Result;
 import fctreddit.api.java.Result.ErrorCode;
 import fctreddit.api.java.Users;
-import fctreddit.api.rest.RestContent;
+import fctreddit.api.rest.ModifiedRestContent;
 import fctreddit.impl.client.UsersClient;
 import fctreddit.impl.server.Hibernate;
 import fctreddit.impl.server.Hibernate.TX;
@@ -31,7 +31,7 @@ public class JavaContent extends JavaServer implements Content {
 
 	private static String serverURI;
 
-    private static final String IMAGE_SERVER_PASSWORD = "image_server_secret";
+  private static final String IMAGE_SERVER_PASSWORD = "image_server_secret";
 
 	private static final long CLEANUP_INTERVAL = 30_000; // 30 segundos
 
@@ -222,7 +222,7 @@ public class JavaContent extends JavaServer implements Content {
 			} else if (sortOrder.equalsIgnoreCase(Content.MOST_REPLIES)) {
 				baseSQLStatement = "SELECT postId FROM (SELECT p.postId as postId, "
 						+ "(SELECT COUNT(*) FROM Post p2 where p2.parentUrl = CONCAT('" + JavaContent.serverURI
-						+ RestContent.PATH + "/',p.postId)) as replies " + "from Post p WHERE "
+						+ ModifiedRestContent.PATH + "/',p.postId)) as replies " + "from Post p WHERE "
 						+ (timestamp > 0 ? "p.creationTimestamp >= '" + timestamp + "' AND " : "")
 						+ "p.parentURL IS NULL) ORDER BY replies DESC, postID ASC";
 			} else {
@@ -289,12 +289,11 @@ public class JavaContent extends JavaServer implements Content {
 				try {
 					lock.wait(maxTimeout);
 				} catch (InterruptedException e) {
-					// Ignore this case...
 				}
 			}
 		}
 
-		String parentURL = serverURI + RestContent.PATH + "/" + postId;
+		String parentURL = serverURI + ModifiedRestContent.PATH + "/" + postId;
 
 		try {
 			List<String> list = null;
@@ -344,7 +343,7 @@ public class JavaContent extends JavaServer implements Content {
 		}
 
 		// Check if there are answers
-		String parentURL = serverURI + RestContent.PATH + "/" + postId;
+		String parentURL = serverURI + ModifiedRestContent.PATH + "/" + postId;
 		if (hibernate.sql(tx, "SELECT p.postId from Post p WHERE p.parentURL='" + parentURL + "'", String.class)
 				.size() > 0) {
 			hibernate.abortTransaction(tx);
@@ -406,7 +405,7 @@ public class JavaContent extends JavaServer implements Content {
 
 		while (!pending.isEmpty()) {
 			Post current = pending.removeFirst();
-			String parentURL = serverURI + RestContent.PATH + "/" + current.getPostId();
+			String parentURL = serverURI + ModifiedRestContent.PATH + "/" + current.getPostId();
 			List<String> descendants = hibernate.sql(tx,
 					"SELECT p.postId from Post p WHERE p.parentURL='" + parentURL + "' ORDER BY p.creationTimestamp",
 					String.class);

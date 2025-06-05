@@ -1,5 +1,6 @@
 package fctreddit.impl.server.java;
 
+import java.net.InetAddress;
 import java.util.UUID;
 import java.util.logging.Logger;
 
@@ -20,7 +21,7 @@ public class JavaImgur extends JavaServer implements Image {
 
     private static JavaImgur instance;
     private static String albumName;
-    private static String albumId;
+    private static String Id;
     private static boolean clearState = false;
     private static String generatedId = null;
 
@@ -30,15 +31,15 @@ public class JavaImgur extends JavaServer implements Image {
 
     private void initializeAlbum() {
         try {
-            albumName = java.net.InetAddress.getLocalHost().getHostName() + (generatedId != null ? generatedId : "");
-            albumId = getAlbum(albumName);
-            if (albumId == null) {
+            albumName = InetAddress.getLocalHost().getHostName() + (generatedId != null ? generatedId : "");
+            Id = getAlbum(albumName);
+            if (Id == null) {
                 CreateAlbum createAlbum = new CreateAlbum();
-                albumId = createAlbum.execute(albumName);
-                Log.info("Created new album with ID: " + albumId);
+                Id = createAlbum.execute(albumName);
+                Log.info("Created album with ID: " + Id);
             } 
         } catch (Exception e) {
-            Log.severe("Failed to initialize album in JavaImgur: " + e.getMessage());
+            Log.severe("Failed to create first album: " + e.getMessage());
         }
     }
 
@@ -69,10 +70,10 @@ public class JavaImgur extends JavaServer implements Image {
 			return Result.error(user.error());
 		}
 		String imageId = UUID.randomUUID().toString();
-		ImageUpload uploader = new ImageUpload();
+		ImageUpload imageUpload = new ImageUpload();
 		try {
-			String id = uploader.execute(imageId, imageContents);
-			Result<String> albumResult = addImageToAlbum(userId, albumId, id, password);
+			String id = imageUpload.execute(imageId, imageContents);
+			Result<String> albumResult = addImageToAlbum(userId, Id, id, password);
 			if (!albumResult.isOK()) {
 				Log.severe("Failed to add image to album: " + albumResult.error());
 				return Result.error(ErrorCode.INTERNAL_ERROR);
@@ -87,15 +88,14 @@ public class JavaImgur extends JavaServer implements Image {
 
     @Override
     public Result<byte[]> getImage(String userId, String imageId) {
-        Log.info("Retrieving image " + imageId + " with clearState=" + clearState);
-        DownloadImage downloader = new DownloadImage(clearState, albumName);
+        DownloadImage downloadImage = new DownloadImage(clearState, albumName);
         try {
-            byte[] imageData = downloader.execute(imageId, albumId);
+            byte[] imageData = downloadImage.execute(imageId, Id);
             if (imageData == null) {
                 Log.warning("Image " + imageId + " not found");
                 return Result.error(ErrorCode.NOT_FOUND);
             }
-            Log.info("Successfully retrieved image " + imageId + ", size: " + imageData.length + " bytes");
+            Log.info("Successfully" + imageId);
             return Result.ok(imageData);
         } catch (Exception e) {
             Log.severe("Failed to download image: " + e.getMessage());
@@ -104,15 +104,14 @@ public class JavaImgur extends JavaServer implements Image {
     }
 
     public Result<String> addImageToAlbum(String userId, String albumId, String imageId, String password) {
-		Log.info("Adding image " + imageId + " to album " + albumId + " for user " + userId);
 		Result<User> user = getUsersClient().getUser(userId, password);
 		if (!user.isOK()) {
 			Log.warning("User validation failed for " + userId + ": " + user.error());
 			return Result.error(user.error());
 		}
-		AddImageToAlbum addImageToAlbum = new AddImageToAlbum();
+		AddImageToAlbum imageToAlbum = new AddImageToAlbum();
 		try {
-			boolean success = addImageToAlbum.execute(albumId, imageId);
+			boolean success = imageToAlbum.execute(albumId, imageId);
 			if (success) {
 				return Result.ok(albumId);
 			} else {
@@ -129,9 +128,9 @@ public class JavaImgur extends JavaServer implements Image {
     @Override
     public Result<Void> deleteImage(String userId, String imageId, String password) {
         Log.info("Deleting image " + imageId);
-        DeleteImage imgurService = new DeleteImage();
+        DeleteImage deleteImage = new DeleteImage();
         try {
-            boolean success = imgurService.execute(imageId);
+            boolean success = deleteImage.execute(imageId);
             if (success) {
                 return Result.ok();
             } else {
@@ -143,10 +142,9 @@ public class JavaImgur extends JavaServer implements Image {
     }
 
     private String getAlbum(String albumName) {
-        Log.info("Checking if album " + albumName + " exists");
-        GetAlbum getAlbum = new GetAlbum();
+        GetAlbum album = new GetAlbum();
         try {
-            String id = getAlbum.execute(albumName);
+            String id = album.execute(albumName);
             return id;
         } catch (Exception e) {
             Log.severe("Failed to check album existence: " + e.getMessage());
